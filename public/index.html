@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microsoft Graph API Notification</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro', 'Segoe UI', Roboto, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .notification {
+            background-color: #f3f3f3;
+            border-radius: 8px;
+            box-shadow: 
+                0px -1px 1.2px 0px rgba(0,0,0,0.04),
+                0px 2.8px 2.9px 0px rgba(0,0,0,0.09),
+                0px 0px 2.9px 0px rgba(0,0,0,0.09);
+            padding: 12px;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            position: relative;
+        }
+
+        .notification-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .notification-title {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 22px;
+            color: #2e2e2e;
+            margin-bottom: 4px;
+        }
+
+        .notification-message {
+            font-size: 13px;
+            font-weight: 400;
+            line-height: 18px;
+            color: #2e2e2e;
+            margin-bottom: 8px;
+        }
+
+        .notification-link {
+            font-size: 13px;
+            font-weight: 400;
+            line-height: 18px;
+            color: #0250d9;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .notification-link:hover {
+            text-decoration: underline;
+        }
+
+        .close-button {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            opacity: 0.6;
+            transition: opacity 0.2s ease;
+        }
+
+        .close-button:hover {
+            opacity: 1;
+            background-color: rgba(0,0,0,0.05);
+        }
+
+        .close-icon {
+            width: 14px;
+            height: 14px;
+            stroke: #2e2e2e;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .demo-info {
+            text-align: center;
+            margin-top: 20px;
+            padding: 16px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .demo-info h2 {
+            color: #2e2e2e;
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .demo-info p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                max-width: 100%;
+                margin: 0 10px;
+            }
+            
+            .notification {
+                padding: 10px;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="notification" id="notification">
+            <div class="notification-content">
+                <div class="notification-title">
+                    Action Required: Microsoft Graph API Setup Needed
+                </div>
+                <div class="notification-message">
+                    Your current email integration uses a deprecated method (EWS). Reconnect now to avoid sync disruptions.
+                </div>
+                <a href="#" class="notification-link" id="reconnectLink">
+                    Reconnect Now
+                </a>
+            </div>
+            <button class="close-button" id="closeButton" aria-label="Close notification">
+                <svg class="close-icon" viewBox="0 0 24 24" fill="none">
+                    <path d="M18 6L6 18M6 6l12 12" stroke="currentColor"/>
+                </svg>
+            </button>
+        </div>
+
+        <div class="demo-info">
+            <h2>🎉 Figma to HTML Demo</h2>
+            <p>This notification component was exported from Figma and converted to HTML/CSS. 
+            Click "Reconnect Now" or the close button to see the interactions!</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('closeButton').addEventListener('click', function() {
+            const notification = document.getElementById('notification');
+            notification.style.transform = 'translateX(100%)';
+            notification.style.opacity = '0';
+            notification.style.transition = 'all 0.3s ease';
+            
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 300);
+        });
+
+        document.getElementById('reconnectLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Reconnection process would start here! 🔄');
+        });
+
+        window.addEventListener('load', function() {
+            const notification = document.getElementById('notification');
+            notification.style.transform = 'translateY(-10px)';
+            notification.style.opacity = '0';
+            notification.style.transition = 'all 0.4s ease';
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateY(0)';
+                notification.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>

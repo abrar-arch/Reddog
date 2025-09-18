@@ -1,0 +1,19 @@
+{
+  "name": "figma-notification-app",
+  "version": "1.0.0",
+  "description": "A Microsoft Graph API notification component exported from Figma",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["figma", "notification", "html", "css", "microsoft-graph"],
+  "author": "abrar-arch",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
